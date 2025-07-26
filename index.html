@@ -297,7 +297,7 @@
             }
         }
 
-        /* Custom Cursor */
+        /* Custom Cursor - Hidden on mobile and tablets */
         .custom-cursor {
             position: fixed;
             width: 20px;
@@ -312,6 +312,14 @@
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.9);
             filter: blur(0.3px);
             will-change: transform, left, top, width, height, border-width;
+            display: none; /* Hidden by default */
+        }
+
+        /* Show custom cursor only on desktop */
+        @media (min-width: 769px) {
+            .custom-cursor {
+                display: block;
+            }
         }
 
         .custom-cursor.hover {
@@ -355,28 +363,43 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
         }
 
-        /* Hide default cursor everywhere */
-        * {
-            cursor: none !important;
+        /* Hide default cursor everywhere - only on desktop */
+        @media (min-width: 769px) {
+            * {
+                cursor: none !important;
+            }
+
+            body {
+                cursor: none !important;
+            }
+
+            html {
+                cursor: none !important;
+            }
+
+            /* Ensure all elements have no cursor */
+            .header, .header *, .main-content, .main-content * {
+                cursor: none !important;
+            }
         }
 
         body {
             margin: 0;
             padding: 0;
             overflow-x: hidden;
-            cursor: none !important;
             margin-top: 110px; /* header height (70px) + top offset (40px) = 110px */
+        }
+
+        /* Adjust body margin for smaller screens */
+        @media (max-width: 525px) {
+            body {
+                margin-top: 80px; /* header height (60px) + top offset (20px) = 80px */
+            }
         }
 
         html {
             margin: 0;
             padding: 0;
-            cursor: none !important;
-        }
-
-        /* Ensure all elements have no cursor */
-        .header, .header *, .main-content, .main-content * {
-            cursor: none !important;
         }
 
         /* Mobile menu */
@@ -586,6 +609,19 @@
                 0 10px 40px rgba(0, 0, 0, 0.3),
                 inset 0 1px 0 rgba(255, 255, 255, 0.1);
             overflow: hidden;
+            cursor: grab;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .main-image-container:active {
+            cursor: grabbing;
+        }
+
+        .main-image-container.dragging {
+            cursor: grabbing;
         }
 
         .main-image {
@@ -677,6 +713,10 @@
                 height: 48px;
             }
 
+            .gallery-label {
+                display: block;
+            }
+
             .main-image-panel {
                 padding: 16px;
                 min-height: 300px;
@@ -685,6 +725,199 @@
             .main-image-container {
                 max-width: 100%;
                 aspect-ratio: 16/9;
+            }
+        }
+
+        /* Proportional scaling for very small screens */
+        @media (max-width: 525px) {
+            /* Global scaling */
+            html {
+                font-size: 14px; /* Reduce base font size */
+            }
+
+            /* Header scaling */
+            .header {
+                top: 20px; /* Reduce top offset */
+                border-radius: 16px;
+            }
+
+            .header-container {
+                height: 60px; /* Reduce header height */
+                padding: 0 var(--spacing-md);
+            }
+
+            .logo {
+                font-size: var(--font-size-lg);
+            }
+
+            .logo-icon {
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+            }
+
+            .logo-icon svg {
+                width: 24px;
+                height: 24px;
+            }
+
+            .btn-download {
+                padding: var(--spacing-xs) var(--spacing-md);
+                border-radius: 8px;
+                font-size: 0.9rem;
+            }
+
+            .theme-toggle-header {
+                width: 32px;
+                height: 32px;
+                border-radius: 8px;
+            }
+
+            .theme-toggle-header svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            /* Main content scaling */
+            .main-content {
+                margin-top: 90px; /* Adjust for smaller header */
+                padding: 16px;
+            }
+
+            .content-container {
+                padding: var(--spacing-xl);
+            }
+
+            .main-title {
+                font-size: clamp(2rem, 5vw, 3rem);
+                margin-bottom: var(--spacing-md);
+            }
+
+            .main-subtitle {
+                font-size: var(--font-size-lg);
+            }
+
+            /* Slider scaling */
+            .slider-section {
+                margin-top: 20px;
+                padding: 20px 10px;
+                margin-bottom: 20px;
+            }
+
+            .slider-container {
+                border-radius: 16px;
+            }
+
+            .thumbnail-panel {
+                padding: 12px;
+                gap: 8px;
+            }
+
+            /* Override 768px rules for very small screens */
+            .slider-wrapper .thumbnail-panel .gallery-label {
+                display: none !important;
+            }
+
+            .slider-wrapper .thumbnail-panel .thumbnail-list .thumbnail-btn {
+                width: 34px !important; /* Reduced by 15% from 40px */
+                height: 34px !important; /* Reduced by 15% from 40px */
+                border-radius: 50%;
+            }
+
+            .image-counter {
+                font-size: 8px;
+            }
+
+            .main-image-panel {
+                padding: 20px;
+                min-height: 250px;
+            }
+
+            .main-image-container {
+                border-radius: 12px;
+            }
+
+                         /* Hide navigation arrows and image info on small screens */
+             .nav-arrow {
+                 display: none;
+             }
+
+             .image-info {
+                 display: none;
+             }
+
+            /* Footer scaling */
+            .footer {
+                border-radius: 16px 16px 24px 24px;
+                margin: 20px auto 16px auto;
+            }
+
+            .footer-container {
+                padding: 24px 16px 12px 16px;
+                gap: 24px;
+            }
+
+            .footer-title {
+                font-size: 1rem;
+                margin-bottom: 12px;
+            }
+
+            .footer-links li {
+                margin-bottom: 8px;
+            }
+
+            .footer-links a {
+                font-size: 0.9rem;
+            }
+
+            .testimonial-item {
+                padding: 12px 14px;
+                border-radius: 8px;
+            }
+
+            .testimonial-text {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+            }
+
+            .testimonial-author {
+                font-size: 0.85rem;
+            }
+
+            .footer-bottom {
+                padding: 12px 0 6px 0;
+                font-size: 0.85rem;
+                margin-top: 12px;
+            }
+
+            .footer-brand {
+                font-size: 1.1rem;
+            }
+
+            .footer-tagline {
+                font-size: 0.9rem;
+                margin-top: 6px;
+            }
+
+            .footer-copyright {
+                font-size: 0.85rem;
+                padding: 6px 0 0 0;
+                margin-bottom: 6px;
+            }
+
+            /* Mobile menu scaling */
+            .mobile-menu {
+                top: 60px; /* Adjust for smaller header */
+                padding: var(--spacing-md);
+            }
+
+            .mobile-nav-item {
+                margin-bottom: var(--spacing-sm);
+            }
+
+            .mobile-nav-link {
+                padding: var(--spacing-xs) 0;
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -1012,29 +1245,10 @@
 
                 <!-- Right Panel - Main Image -->
                 <div class="main-image-panel">
-                    <div class="main-image-container">
+                    <div class="main-image-container" id="main-image-container">
                         <a id="main-image-link" href="https://google.com" target="_blank" rel="noopener noreferrer">
                             <img id="main-image" src="slider images/sl 1.jpg" alt="Main slide" class="main-image">
                         </a>
-                        
-                        <!-- Image info overlay -->
-                        <div class="image-info">
-                            <div class="image-id">IMAGE_01</div>
-                            <div class="image-name">sl 1.jpg</div>
-                        </div>
-                        
-                        <!-- Navigation arrows -->
-                        <button type="button" class="nav-arrow nav-prev" id="prev-btn" aria-label="Previous image">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M15 19l-7-7 7-7"/>
-                            </svg>
-                        </button>
-                        
-                        <button type="button" class="nav-arrow nav-next" id="next-btn" aria-label="Next image">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M9 5l7 7-7 7"/>
-                            </svg>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -1093,7 +1307,7 @@
 
 
 
-        // Custom cursor functionality
+        // Custom cursor functionality - Only on desktop
         const cursor = document.getElementById('custom-cursor');
         let mouseX = 0;
         let mouseY = 0;
@@ -1101,15 +1315,28 @@
         let cursorY = 0;
         let isHovering = false;
         let isClicking = false;
+        let isDesktop = window.innerWidth >= 769;
 
-        // Update mouse position
+        // Check if device is desktop
+        function checkDeviceType() {
+            isDesktop = window.innerWidth >= 769;
+            if (!isDesktop && cursor) {
+                cursor.style.display = 'none';
+            } else if (isDesktop && cursor) {
+                cursor.style.display = 'block';
+            }
+        }
+
+        // Update mouse position - only on desktop
         document.addEventListener('mousemove', (e) => {
+            if (!isDesktop) return;
             mouseX = e.clientX;
             mouseY = e.clientY;
         });
 
-        // Handle hover states for all buttons and interactive elements
+        // Handle hover states for all buttons and interactive elements - only on desktop
         document.addEventListener('mouseover', (e) => {
+            if (!isDesktop || !cursor) return;
             if (e.target.matches('a, button, .btn, .nav-link, .dropdown-item, .mobile-nav-link, .logo, .theme-toggle-header, .mobile-menu-toggle, input, textarea, select, img, .btn-download, .btn-primary, .btn-secondary, .btn-outline, .btn-ghost, [role="button"], [tabindex], .dropdown, .header-actions, .nav-item')) {
                 isHovering = true;
                 cursor.classList.add('hover');
@@ -1117,25 +1344,32 @@
         });
 
         document.addEventListener('mouseout', (e) => {
+            if (!isDesktop || !cursor) return;
             if (e.target.matches('a, button, .btn, .nav-link, .dropdown-item, .mobile-nav-link, .logo, .theme-toggle-header, .mobile-menu-toggle, input, textarea, select, img, .btn-download, .btn-primary, .btn-secondary, .btn-outline, .btn-ghost, [role="button"], [tabindex], .dropdown, .header-actions, .nav-item')) {
                 isHovering = false;
                 cursor.classList.remove('hover');
             }
         });
 
-        // Handle click states
+        // Handle click states - only on desktop
         document.addEventListener('mousedown', () => {
+            if (!isDesktop || !cursor) return;
             isClicking = true;
             cursor.classList.add('click');
         });
 
         document.addEventListener('mouseup', () => {
+            if (!isDesktop || !cursor) return;
             isClicking = false;
             cursor.classList.remove('click');
         });
 
-        // Instant cursor animation - no lag
+        // Instant cursor animation - no lag - only on desktop
         function animateCursor() {
+            if (!isDesktop || !cursor) {
+                requestAnimationFrame(animateCursor);
+                return;
+            }
             // Direct position update for instant response
             cursor.style.left = (mouseX - 10) + 'px';
             cursor.style.top = (mouseY - 10) + 'px';
@@ -1146,13 +1380,12 @@
         // Start cursor animation
         animateCursor();
 
-        // Ensure default cursor is hidden everywhere
+        // Handle window resize
+        window.addEventListener('resize', checkDeviceType);
+
+        // Initialize device type check
         document.addEventListener('DOMContentLoaded', () => {
-            // Force hide cursor on all elements
-            const allElements = document.querySelectorAll('*');
-            allElements.forEach(element => {
-                element.style.cursor = 'none';
-            });
+            checkDeviceType();
         });
 
 
@@ -1189,8 +1422,13 @@
         const thumbnailList = document.getElementById('thumbnail-list');
         const currentImageSpan = document.getElementById('current-image');
         const totalImagesSpan = document.getElementById('total-images');
-        const prevBtn = document.getElementById('prev-btn');
-        const nextBtn = document.getElementById('next-btn');
+        const mainImageContainer = document.getElementById('main-image-container');
+        
+        // Drag functionality variables
+        let isDragging = false;
+        let startX = 0;
+        let startY = 0;
+        let dragThreshold = 50; // Minimum drag distance to trigger image change
 
         // --- Animation helpers ---
         function fadeOutIn(element, newSrc, callback) {
@@ -1274,15 +1512,9 @@
             }
         }
 
-        // Update image info
+        // Update image info (removed since we no longer show image info box)
         function updateImageInfo() {
-            const imageId = document.querySelector('.image-id');
-            const imageName = document.querySelector('.image-name');
-            
-            if (imageId && imageName) {
-                imageId.textContent = `IMAGE_${String(currentImageIndex + 1).padStart(2, '0')}`;
-                imageName.textContent = images[currentImageIndex].split('/').pop();
-            }
+            // Function kept for compatibility but no longer updates UI
         }
 
         // Navigation functions
@@ -1296,10 +1528,70 @@
             setCurrentImage(prevIndex, animated);
         }
 
-        // Add navigation event listeners
-        if (prevBtn && nextBtn) {
-            prevBtn.addEventListener('click', () => { prevImage(true); resetSliderInterval(); });
-            nextBtn.addEventListener('click', () => { nextImage(true); resetSliderInterval(); });
+        // Drag functionality for mobile/tablet
+        if (mainImageContainer) {
+            // Touch events for mobile
+            mainImageContainer.addEventListener('touchstart', handleDragStart);
+            mainImageContainer.addEventListener('touchmove', handleDragMove);
+            mainImageContainer.addEventListener('touchend', handleDragEnd);
+            
+            // Mouse events for desktop
+            mainImageContainer.addEventListener('mousedown', handleDragStart);
+            mainImageContainer.addEventListener('mousemove', handleDragMove);
+            mainImageContainer.addEventListener('mouseup', handleDragEnd);
+            mainImageContainer.addEventListener('mouseleave', handleDragEnd);
+        }
+
+        // Drag event handlers
+        function handleDragStart(e) {
+            isDragging = true;
+            mainImageContainer.classList.add('dragging');
+            
+            if (e.type === 'touchstart') {
+                startX = e.touches[0].clientX;
+                startY = e.touches[0].clientY;
+            } else {
+                startX = e.clientX;
+                startY = e.clientY;
+            }
+        }
+
+        function handleDragMove(e) {
+            if (!isDragging) return;
+            
+            e.preventDefault();
+            
+            let currentX, currentY;
+            if (e.type === 'touchmove') {
+                currentX = e.touches[0].clientX;
+                currentY = e.touches[0].clientY;
+            } else {
+                currentX = e.clientX;
+                currentY = e.clientY;
+            }
+            
+            const deltaX = currentX - startX;
+            const deltaY = currentY - startY;
+            
+            // Only trigger if horizontal drag is significant and vertical drag is minimal
+            if (Math.abs(deltaX) > dragThreshold && Math.abs(deltaY) < dragThreshold) {
+                if (deltaX > 0) {
+                    // Swipe right - go to previous image
+                    prevImage(true);
+                    resetSliderInterval();
+                } else {
+                    // Swipe left - go to next image
+                    nextImage(true);
+                    resetSliderInterval();
+                }
+                isDragging = false;
+                mainImageContainer.classList.remove('dragging');
+            }
+        }
+
+        function handleDragEnd(e) {
+            isDragging = false;
+            mainImageContainer.classList.remove('dragging');
         }
 
         // Keyboard navigation
