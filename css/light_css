@@ -3,15 +3,15 @@
 
 /* Light Mode Color Variables */
 :root {
-  --background: #FFFFFF;
-  --surface: #F5F5F5;
+  --background: #F1F3F4;
+  --surface: #E8EAED;
   --primary-text: #1A1A1A;
-  --secondary-text: #555555;
-  --border: #E0E0E0;
+  --secondary-text: #495057;
+  --border: #DADCE0;
   --primary-accent: #00A6B6;
   --primary-hover: #008B99;
   --secondary: #13455A;
-  --disabled: #CCCCCC;
+  --disabled: #ADB5BD;
   
   /* Light Mode Specific Shadows */
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
