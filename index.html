@@ -4,12 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ZenonSphere - AI-Powered Development</title>
-    
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/light_css">
     <link rel="stylesheet" href="css/dark_css">
-    
     <style>
         /* Header-specific styles - Floating Island Design */
         .header {
@@ -635,7 +633,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: var(--panel-bg-image, url('slider images/sl 1.jpg'));
+            background-image: var(--panel-bg-image, url('slider_images/sl 1.jpg'));
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
@@ -1813,6 +1811,567 @@
                 height: 14px;
             }
         }
+
+        /* WHY CHOOSE US SECTION */
+        .why-choose-us-section {
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            /* Remove border and box-shadow from section */
+            border: none !important;
+            box-shadow: none !important;
+        }
+
+        .why-choose-us-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .why-choose-us-header {
+            text-align: center;
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .why-choose-us-title {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 800;
+            color: var(--primary-text);
+            margin-bottom: 0;
+            text-transform: lowercase;
+        }
+
+        /* Feature Cards Row */
+        .feature-cards-row {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .feature-card-top {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 24px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05);
+            width: 160px;
+            height: 160px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [data-theme="dark"] .feature-card-top {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card-top:hover {
+            transform: translateY(-4px);
+            box-shadow: 
+                0 8px 24px rgba(0, 0, 0, 0.15),
+                0 4px 16px rgba(0, 166, 182, 0.1);
+            border-color: var(--primary-accent);
+        }
+
+        .feature-icon-top {
+            width: 40px;
+            height: 40px;
+            margin: 0 auto 16px;
+            background: transparent;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: none;
+        }
+
+        .feature-logo-top {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        [data-theme="dark"] .feature-logo-top {
+            filter: brightness(0) saturate(100%) invert(1);
+        }
+        [data-theme="light"] .feature-logo-top {
+            filter: none;
+        }
+
+        .feature-name-top {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-text);
+        }
+
+        /* Main Content Area */
+        .main-content-area {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .platforms-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .platforms-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-text);
+            margin-bottom: 32px;
+            text-align: center;
+        }
+
+        .platforms-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .platform-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .platform-item:last-child {
+            border-bottom: none;
+        }
+
+        .platform-item:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .platform-logo-container {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .platform-logo-item {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        [data-theme="light"] .platform-logo-item {
+            filter: brightness(0) saturate(100%);
+        }
+
+        .platform-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-text);
+            letter-spacing: 1px;
+        }
+
+        .services-pricing-section {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .services-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-text);
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            justify-items: center;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05);
+            width: 200px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        [data-theme="dark"] .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 12px 32px rgba(0, 0, 0, 0.15),
+                0 4px 16px rgba(0, 166, 182, 0.1);
+            border-color: var(--primary-accent);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 16px;
+            background: linear-gradient(135deg, var(--primary-accent), var(--primary-hover));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 4px 16px rgba(0, 166, 182, 0.3);
+        }
+
+        .service-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-text);
+            margin-bottom: 8px;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+        }
+
+        .service-card.custom-requirement {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 166, 182, 0.1);
+            border: 2px dashed var(--primary-accent);
+        }
+
+        [data-theme="dark"] .service-card.custom-requirement {
+            background: rgba(0, 166, 182, 0.05);
+        }
+
+        .custom-text {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary-accent);
+            text-align: center;
+            letter-spacing: 0.5px;
+        }
+
+        .get-quote-btn {
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--primary-text);
+            border: 2px solid var(--border);
+            border-radius: 16px;
+            padding: 20px 40px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        [data-theme="dark"] .get-quote-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            color: var(--primary-text);
+        }
+
+        .get-quote-btn:hover {
+            background: var(--primary-accent);
+            color: white;
+            border-color: var(--primary-accent);
+            transform: translateY(-4px);
+            box-shadow: 
+                0 12px 32px rgba(0, 166, 182, 0.3),
+                0 4px 16px rgba(0, 166, 182, 0.2);
+        }
+
+        .get-quote-btn:active {
+            transform: translateY(-2px);
+        }
+
+        /* Features Section Styles */
+        .features-section {
+            margin-top: 60px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            box-shadow: 
+                0 8px 32px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        .features-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-text);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.1),
+                0 2px 8px rgba(0, 0, 0, 0.05);
+        }
+
+        [data-theme="dark"] .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 4px 16px rgba(0, 0, 0, 0.2),
+                0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 12px 32px rgba(0, 0, 0, 0.15),
+                0 4px 16px rgba(0, 166, 182, 0.1);
+            border-color: var(--primary-accent);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--primary-accent), var(--primary-hover));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 24px rgba(0, 166, 182, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1);
+            box-shadow: 0 12px 32px rgba(0, 166, 182, 0.4);
+        }
+
+        .feature-logo {
+            width: 48px;
+            height: 48px;
+            object-fit: contain;
+            filter: brightness(0) invert(1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-text);
+            margin-top: 16px;
+        }
+
+        /* Responsive design for Why Choose Us section */
+        @media (max-width: 1024px) {
+            .main-content-area {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .why-choose-us-section {
+                padding: 60px 16px;
+            }
+
+            .feature-cards-row {
+                gap: 16px;
+            }
+
+            .feature-card-top {
+                width: 120px;
+                height: 120px;
+                padding: 16px;
+            }
+
+            .feature-icon-top {
+                width: 48px;
+                height: 48px;
+            }
+
+            .feature-logo-top {
+                width: 28px;
+                height: 28px;
+            }
+
+            .feature-name-top {
+                font-size: 0.9rem;
+            }
+
+            .main-content-area {
+                padding: 24px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+                justify-items: center;
+            }
+
+            .service-card {
+                width: 180px;
+                height: 180px;
+                padding: 20px;
+            }
+
+            .get-quote-btn {
+                padding: 16px 32px;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .why-choose-us-title {
+                font-size: 2rem;
+            }
+
+            .platforms-title,
+            .services-title {
+                font-size: 1.5rem;
+            }
+
+            .feature-cards-row {
+                gap: 12px;
+            }
+
+            .feature-card-top {
+                width: 100px;
+                height: 100px;
+                padding: 12px;
+            }
+
+            .feature-icon-top {
+                width: 40px;
+                height: 40px;
+            }
+
+            .feature-logo-top {
+                width: 24px;
+                height: 24px;
+            }
+
+            .feature-name-top {
+                font-size: 0.8rem;
+            }
+
+            .platform-item {
+                padding: 12px 0;
+                gap: 12px;
+            }
+
+            .platform-logo-container {
+                width: 32px;
+                height: 32px;
+            }
+
+            .platform-name {
+                font-size: 1rem;
+            }
+
+            .service-card {
+                width: 160px;
+                height: 160px;
+                padding: 16px;
+            }
+
+            .service-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .service-name {
+                font-size: 1rem;
+            }
+
+            .service-price {
+                font-size: 1.1rem;
+            }
+
+            .main-content-area {
+                padding: 20px;
+            }
+        }
+
+        .feature-card-top:nth-child(3) .feature-logo-top svg *,
+        .feature-card-top:nth-child(4) .feature-logo-top svg * {
+            fill: var(--primary-accent) !important;
+            stroke: var(--primary-accent) !important;
+        }
+        .feature-card-top:nth-child(3) .feature-logo-top,
+        .feature-card-top:nth-child(4) .feature-logo-top {
+        }
     </style>
     <style>
         .footer {
@@ -2145,13 +2704,145 @@
                 <div class="main-image-panel">
                     <div class="main-image-container">
                         <a id="main-image-link" href="https://google.com" target="_blank" rel="noopener noreferrer">
-                            <img id="main-image" src="slider images/sl 1.jpg" alt="Main slide" class="main-image">
+                            <img id="main-image" src="slider_images/sl 1.jpg" alt="Main slide" class="main-image">
                         </a>
-                        
-
-                        
 
                         </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us-section">
+        <div class="why-choose-us-container">
+            <div class="why-choose-us-header">
+                <h2 class="why-choose-us-title">why choose us ?</h2>
+            </div>
+            
+            <!-- Feature Cards Row -->
+            <div class="feature-cards-row">
+                <div class="feature-card-top">
+                    <div class="feature-icon-top">
+                        <img src="website_feature_logo/seo optimised.svg" alt="SEO Ready" class="feature-logo-top">
+                    </div>
+                    <div class="feature-name-top">SEO Ready</div>
+                </div>
+                
+                <div class="feature-card-top">
+                    <div class="feature-icon-top">
+                        <img src="website_feature_logo/responsive.svg" alt="Responsive Layout" class="feature-logo-top">
+                    </div>
+                    <div class="feature-name-top">Responsive Layout</div>
+                </div>
+                
+                <div class="feature-card-top">
+                    <div class="feature-icon-top">
+                        <img src="website_feature_logo/attractive - Copy.svg" alt="Attractive Design" class="feature-logo-top">
+                    </div>
+                    <div class="feature-name-top">Attractive Design</div>
+                </div>
+                
+                <div class="feature-card-top">
+                    <div class="feature-icon-top">
+                        <img src="website_feature_logo/speed perfomance - Copy.svg" alt="Fast Perfomance" class="feature-logo-top">
+                    </div>
+                    <div class="feature-name-top">Fast Perfomance</div>
+                </div>
+                
+                <div class="feature-card-top">
+                    <div class="feature-icon-top">
+                        <img src="website_feature_logo/user friendly.svg" alt="User Friendly" class="feature-logo-top">
+                    </div>
+                    <div class="feature-name-top">User Friendly</div>
+                </div>
+            </div>
+            
+            <!-- Main Content Area -->
+            <div class="main-content-area">
+                <div class="platforms-section">
+                    <h3 class="platforms-title">All Major Platforms</h3>
+                    <div class="platforms-list">
+                        <div class="platform-item">
+                            <div class="platform-logo-container">
+                                <img src="web_dev_platforms_logo/wordpress.svg" alt="WordPress" class="platform-logo-item">
+                            </div>
+                            <span class="platform-name">WORDPRESS</span>
+                        </div>
+                        <div class="platform-item">
+                            <div class="platform-logo-container">
+                                <img src="web_dev_platforms_logo/shopify.svg" alt="Shopify" class="platform-logo-item">
+                            </div>
+                            <span class="platform-name">SHOPIFY</span>
+                        </div>
+                        <div class="platform-item">
+                            <div class="platform-logo-container">
+                                <img src="web_dev_platforms_logo/wix.svg" alt="Wix" class="platform-logo-item">
+                            </div>
+                            <span class="platform-name">WIX</span>
+                        </div>
+                        <div class="platform-item">
+                            <div class="platform-logo-container">
+                                <img src="web_dev_platforms_logo/webflow.svg" alt="Webflow" class="platform-logo-item">
+                            </div>
+                            <span class="platform-name">WEBFLOW</span>
+                        </div>
+                        <div class="platform-item">
+                            <div class="platform-logo-container">
+                                <img src="web_dev_platforms_logo/custom code.svg" alt="Custom Code" class="platform-logo-item">
+                            </div>
+                            <span class="platform-name">CUSTOM CODED</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="services-pricing-section">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                    <path d="M8 9l4 4 4-4"/>
+                                </svg>
+                            </div>
+                            <div class="service-name">Landing pages</div>
+                            <div class="service-price">Starts ₹999/-</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                    <path d="M12 8v8M8 12h8"/>
+                                </svg>
+                            </div>
+                            <div class="service-name">E-Commerce site</div>
+                            <div class="service-price">Starts ₹9,999/-</div>
+                        </div>
+                        
+                        <div class="service-card">
+                            <div class="service-icon">
+                                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                    <line x1="8" y1="21" x2="16" y2="21"/>
+                                    <line x1="12" y1="17" x2="12" y2="21"/>
+                                    <rect x="8" y="8" width="8" height="8"/>
+                                </svg>
+                            </div>
+                            <div class="service-name">Business Portfolio site</div>
+                            <div class="service-price">Starts ₹4,999/-</div>
+                        </div>
+                        
+                        <div class="service-card custom-requirement">
+                            <div class="custom-text">HAVE CUSTOM REQUIREMENT?</div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="get-quote-btn">GET QUOTE</button>
                 </div>
             </div>
         </div>
@@ -2287,7 +2978,6 @@
 
     <!-- JavaScript -->
     <script src="js/theme-switcher.js"></script>
-    
     <script>
         // Theme toggle functionality
         const themeToggleHeader = document.querySelector('.theme-toggle-header');
@@ -2445,12 +3135,12 @@
 
         // Image Slider Functionality
         const images = [
-            'slider images/sl 1.jpg',
-            'slider images/sl 2.jpg',
-            'slider images/sl 3.jpg',
-            'slider images/sl 4.jpg',
-            'slider images/sl 5.jpg',
-            'slider images/sl 6.jpg'
+            'slider_images/sl 1.jpg',
+            'slider_images/sl 2.jpg',
+            'slider_images/sl 3.jpg',
+            'slider_images/sl 4.jpg',
+            'slider_images/sl 5.jpg',
+            'slider_images/sl 6.jpg'
         ];
 
         let currentImageIndex = 0;
